@@ -1,0 +1,91 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+
+<!--
+`hipaa-dea-number-input`
+project
+
+@demo demo/index.html
+-->
+
+<dom-module id="hipaa-dea-number-input">
+    <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+     <paper-input id="input" label="{{label}}"  value="{{value}}" required="{{required}}" auto-validate="{{autoValidate}}"
+      invalid="{{invalid}}" pattern="^[a-zA-Z]{2}[0-9]{7}$" error-message="{{errorMessage}}">
+    </paper-input>
+  </template>
+
+    <script>
+        'use strict';
+        Polymer({
+
+            is: 'hipaa-dea-number-input',
+            properties: {
+                label: {
+                    type: String,
+                    value: 'DEA Number'
+                },
+                errorMessage: {
+                    type: String,
+                    value: 'DEA Number is invalid'
+                },
+                value: {
+                    type: String,
+                    notify: true,
+                    observer: '_valueChanged'
+                },
+                invalid: {
+                    type: Boolean,
+                    value: false,
+                    notify: true
+                },
+                autoValidate: {
+                    type: Boolean,
+                    value: false,
+                    notify: true
+                },
+                required: {
+                    type: Boolean,
+                    value: false,
+                    notify: true
+                },
+
+            },
+
+            validate: function() {
+                let validSoFar = true;
+                let strDigits = new String(this.value.substr(2, 7));
+                let nDigit1 = parseInt(strDigits.substr(0, 1));
+                let nDigit2 = parseInt(strDigits.substr(1, 1));
+                let nDigit3 = parseInt(strDigits.substr(2, 1));
+                let nDigit4 = parseInt(strDigits.substr(3, 1));
+                let nDigit5 = parseInt(strDigits.substr(4, 1));
+                let nDigit6 = parseInt(strDigits.substr(5, 1));
+                let nCheckDigit = parseInt(strDigits.substr(6, 1));
+                let nSumD135 = nDigit1 + nDigit3 + nDigit5;
+                let nSumD246Times2 = (nDigit2 + nDigit4 + nDigit6) * 2;
+                let nSumBoth = nSumD135 + nSumD246Times2;
+                let strSumBoth = new String(nSumBoth);
+                let strSumBothLastDigit = parseInt(strSumBoth.charAt(strSumBoth.length - 1));
+                if (nCheckDigit === strSumBothLastDigit) {
+                    this.set('invalid', false);
+                    return this.invalid;
+                } else {
+                    this.set('invalid', true);
+                    return this.invalid;
+                }
+            },
+            _valueChanged: function() {
+                if (this.autoValidate) {
+                    this.validate();
+                }
+            },
+
+        });
+    </script>
+</dom-module>

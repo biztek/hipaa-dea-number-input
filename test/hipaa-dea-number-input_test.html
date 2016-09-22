@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>hipaa-dea-number-input test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../hipaa-dea-number-input.html">
+</head>
+
+<body>
+
+    <test-fixture id="basic">
+        <template>
+        <hipaa-dea-number-input></hipaa-dea-number-input>
+      </template>
+    </test-fixture>
+
+    <script>
+        suite('hipaa-dea-number-input', function() {
+            let element, deainput;
+            setup(function() {
+                element = fixture('basic');
+            });
+
+            test('instantiating the deanumber element works', function() {
+                assert.equal(element.is, 'hipaa-dea-number-input');
+            });
+            test('setting some value for deanumber and checking the value sets properly', function() {
+                deainput = Polymer.dom(element.root).querySelector('#input');
+                deainput.value = '123456789';
+                assert.equal(deainput.value, '123456789');
+            });
+            test('setting invalid value for deanumber and validating the deanumber', function() {
+                deainput = Polymer.dom(element.root).querySelector('#input');
+                deainput.value = '123456789';
+                deainput.validate();
+                assert.isTrue(deainput.invalid, 'DEA Number is invalid');
+            });
+            test('setting invalid value for deanumber and check the validation message', function() {
+                deainput = Polymer.dom(element.root).querySelector('#input');
+                deainput.value = '123456789';
+                deainput.validate();
+                assert.equal(deainput.errorMessage, 'DEA Number is invalid');
+            });
+            test('setting value for deanumber and validating the deanumber', function() {
+                deainput = Polymer.dom(element.root).querySelector('#input');
+                deainput.value = 'AS5623740';
+                deainput.validate();
+                assert.isFalse(deainput.invalid, 'DEA Number is valid');
+            });
+            test('changing deanumber value and checking the validation works', function() {
+                deainput = Polymer.dom(element.root).querySelector('#input');
+                deainput.value = 'AS5623740';
+                assert.isFalse(deainput.invalid, 'DEA Number is valid');
+                deainput.autoValidate = true;
+                deainput.value = 'B23456789';
+                assert.isTrue(deainput.invalid, 'DEA Number is invalid');
+            });
+            test('setting value and autoValidate attributes for deanumber and checking the validation works', function() {
+                deainput = Polymer.dom(element.root).querySelector('#input');
+                deainput.autoValidate = true;
+                deainput.value = 'B23456789';
+                assert.isTrue(deainput.invalid, 'DEA Number is invalid');
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
