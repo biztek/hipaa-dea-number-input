@@ -1,38 +1,32 @@
+[![Build Status](https://travis-ci.org/rajkumarajce/hipaa-dea-number-input.svg?branch=master)](https://travis-ci.org/rajkumarajce/hipaa-dea-number-input)
+
+_[Demo and API docs](https://rajkumarajce.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input)_
+
 # \<hipaa-dea-number-input\>
 
-project
+`<hipaa-dea-number-input>` is a single-line text field to hold valid Hipaa compliant DEA number.
 
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
-
-## Viewing Your Application
-
-```
-$ polymer serve
+```html
+<hipaa-dea-number-input label="Input label"></hipaa-dea-number-input>
 ```
 
-## Building Your Application
+It includes an optional label,error message,invalid,autovalidate and required attributes.
 
-```
-$ polymer build
-```
-
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
-
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
-
-```
-$ polymer serve build/bundled
+```html
+<hipaa-dea-number-input label="Input label"></hipaa-dea-number-input>
+<hipaa-dea-number-input error-message="Invalid input!"></hipaa-dea-number-input>
+<hipaa-dea-number-input invalid="boolean value"></hipaa-dea-number-input>
+<hipaa-dea-number-input autoValidate="boolean value"></hipaa-dea-number-input>
+<hipaa-dea-number-input required="boolean value"></hipaa-dea-number-input>
 ```
 
-## Running Tests
+### Listening for input changes
 
-```
-$ polymer test
-```
+By default, it listens for changes on the `bind-value` attribute on its children nodes and perform
+tasks such as auto-validating and label styling when the `bind-value` changes.
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+### Validation
+
+If the `auto-validate` attribute is set, element validates the input whether it is Hipaa compliant DEA number and update
+the label styling when the input value changes.
+
