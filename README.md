@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rajkumarajce/hipaa-dea-number-input.svg?branch=master)](https://travis-ci.org/rajkumarajce/hipaa-dea-number-input)
+[![Build Status](https://travis-ci.org/biztek/hipaa-dea-number-input.svg?branch=master)](https://travis-ci.org/biztek/hipaa-dea-number-input)
 
 _[Demo and API docs](https://rajkumarajce.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input)_
 
