@@ -19,6 +19,18 @@ It includes an optional label,error message,invalid,autovalidate and required at
 <hipaa-dea-number-input autoValidate="boolean value"></hipaa-dea-number-input>
 <hipaa-dea-number-input required="boolean value"></hipaa-dea-number-input>
 ```
+### DEA Numbers Validation.
+A DEA number (DEA Registration Number) is a number assigned to a health care provider.
+
+A valid DEA number consists of: 2 letters, 6 numbers, & 1 check digit.
+The first letter is a code identifying the type of registrant.
+The second letter is the first letter of the registrant's last name.
+
+The last Number : DEA numbers can be verified by using the last number, which is known as the Check Digit.
+
+Right Format DEA Numbers example: BJ6125341 , FN5623740, AS5623740.
+
+Wrong Format DEA Numbers : B23456789, 73636373D.
 
 ### Listening for input changes
 
