@@ -80,18 +80,18 @@
   suite('validating hippa-dea-number-input value', function() {
 
     test('deanumber value is not set invalid to true', function() {
-      var input = fixture('validator');
+      let input = fixture('validator');
       assert.ok(input.invalid, 'input is invalid');
       assert.isTrue(input.invalid, 'input is invalid');
     });
 
     test('deanumber value is not set throw errorMessage', function() {
-      var input = fixture('validator');
+      let input = fixture('validator');
       assert.equal(input.errorMessage, 'DEA Number is invalid');
     });
 
     test('valid deanumber is set invalid false', function() {
-      var input = fixture('validDeaNumber');
+      let input = fixture('validDeaNumber');
       assert.isFalse(input.invalid, 'DEA Number is valid');
     });
 
