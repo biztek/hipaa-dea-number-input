@@ -26,8 +26,20 @@
           <hipaa-dea-number-input auto-validate></hipaa-dea-number-input>
         </template>
         </demo-snippet>
-    </div>
+        <h3>Inputs can validate automatically or on demand, and can have custom error messages</h3>
+  <demo-snippet>
+    <template>
+      <hipaa-dea-number-input id="inputForValidation" required autovalidate label="DEA Number"  pattern="^[a-zA-Z]{2}[0-9]{7}$" error-message="DEA Number is invalid"></hipaa-dea-number-input>
 
+      <button onclick="validate()">Validate!</button>
+    </template>
+  </demo-snippet>
+    </div>
+    <script>
+        function validate() {
+          document.getElementById('inputForValidation').validate(); //jshint ignore:line
+        }
+      </script>
 </body>
 
 </html>

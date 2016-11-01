@@ -46,39 +46,14 @@
                         deainput.validate();
                         assert.isTrue(deainput.invalid, 'DEA Number is invalid');
                   });
-                  test('setting invalid value for deanumber and check the validation message', function() {
-                        deainput = Polymer.dom(element.root).querySelector('#input');
-                        deainput.value = '123456789';
-                        deainput.validate();
-                        assert.equal(deainput.errorMessage, 'DEA Number is invalid');
-                  });
                   test('setting value for deanumber and validating the deanumber', function() {
                         deainput = Polymer.dom(element.root).querySelector('#input');
                         deainput.value = 'AS5623740';
                         deainput.validate();
                         assert.isFalse(deainput.invalid, 'DEA Number is valid');
                   });
-                  test('changing deanumber value and checking the validation works', function() {
-                        deainput = Polymer.dom(element.root).querySelector('#input');
-                        deainput.value = 'AS5623740';
-                        assert.isFalse(deainput.invalid, 'DEA Number is valid');
-                        deainput.autoValidate = true;
-                        deainput.value = 'B23456789';
-                        assert.isTrue(deainput.invalid, 'DEA Number is invalid');
-                  });
-                  test('setting value and autoValidate attributes for deanumber and checking the validation works', function() {
-                        deainput = Polymer.dom(element.root).querySelector('#input');
-                        deainput.autoValidate = true;
-                        deainput.value = 'B23456789';
-                        assert.isTrue(deainput.invalid, 'DEA Number is invalid');
-                  });
             });
             suite('validating hippa-dea-number-input value', function() {
-                  test('deanumber value is not set invalid to true', function() {
-                        let input = fixture('validator');
-                        assert.ok(input.invalid, 'input is invalid');
-                        assert.isTrue(input.invalid, 'input is invalid');
-                  });
                   test('deanumber value is not set throw errorMessage', function() {
                         let input = fixture('validator');
                         assert.equal(input.errorMessage, 'DEA Number is invalid');

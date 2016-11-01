@@ -1,9 +1,12 @@
+<!doctype html>
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-input/paper-input-behavior.html">
+<link rel="import" href="../paper-input/paper-input-container.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../paper-input/paper-input-error.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <!--
 `hipaa-dea-number-input`
-project
-
 @demo demo/index.html
 -->
 <dom-module id="hipaa-dea-number-input">
@@ -13,26 +16,38 @@ project
                         display: block;
                   }
             </style>
-            <paper-input id="input" label="[[label]]" value="{{value}}" required="[[required]]" auto-validate="[[autoValidate]]" invalid="{{invalid}}" pattern="^[a-zA-Z]{2}[0-9]{7}$" error-message="{{errorMessage}}" maxlength="[[maxlength]]">
-            </paper-input>
+
+            <paper-input-container id="container" disabled$="[[disabled]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" invalid="[[invalid]]">
+
+                  <label hidden$="[[!label]]">[[label]]</label>
+
+                  <input is="iron-input" id="input" aria-labelledby$="[[_ariaLabelledBy]]" aria-describedby$="[[_ariaDescribedBy]]" disabled$="[[disabled]]" bind-value="{{value}}" required$="[[required]]" name$="[[name]]" prevent-invalid-input invalid="{{invalid}}" autofocus$="[[autofocus]]"
+                    inputmode$="[[inputmode]]" maxlength$="[[maxlength]]">
+
+                  <template is="dom-if" if="[[errorMessage]]">
+                        <paper-input-error id="error">[[errorMessage]]</paper-input-error>
+                  </template>
+
+            </paper-input-container>
       </template>
+
       <script>
             'use strict';
-            Polymer({
+            Polymer({ // jshint ignore:line
                   is: 'hipaa-dea-number-input',
+                  behaviors: [
+                        Polymer.PaperInputBehavior, // jshint ignore:line
+                        Polymer.IronFormElementBehavior // jshint ignore:line
+                  ],
                   properties: {
                         label: {
                               type: String,
                               value: 'DEA Number'
                         },
-                        errorMessage: {
-                              type: String,
-                              value: 'DEA Number is invalid'
-                        },
                         value: {
                               type: String,
                               notify: true,
-                              observer: '_valueChanged'
+                              observer: '_onValueChanged'
                         },
                         invalid: {
                               type: Boolean,
@@ -41,18 +56,67 @@ project
                         },
                         autoValidate: {
                               type: Boolean,
-                              value: false
+                              value: false,
+                              notify: true
                         },
                         required: {
+                              type: Boolean,
+                              value: false,
+                              notify: true
+                        },
+                        disabled: {
                               type: Boolean,
                               value: false
                         },
                         maxlength: {
                               type: Number,
                               value: 9
+                        },
+                        validPattern: {
+                              type: String,
+                              value: '^[a-zA-Z]{2}[0-9]{7}$',
+                              observer: '_validPatternChanged'
+                        },
+                        errorMessage: {
+                              type: String,
+                              value: 'DEA Number is invalid'
+                        }
+                  },
+                  observers: [
+                        '_onFocusedChanged(focused)'
+                  ],
+                  ready: function() {
+                        if (this.value)
+                              this._handleAutoValidate();
+                  },
+                  _onValueChanged: function(value, oldValue) {
+                        if (typeof oldValue === 'undefined')
+                              return;
+                        if (this.autoValidate) {
+                              this.validate();
+                        }
+                        this._handleAutoValidate();
+                  },
+                  _onFocusedChanged: function(focused) {
+                        if (!focused) {
+                              this._handleAutoValidate();
                         }
                   },
                   validate: function() {
+                        var valid = this.$.input.validate();
+                        if (this.value && this.value.length === 9) {
+                              this.invalid = !this._checkIfValid(); // jshint ignore:line
+                              this.$.container.invalid = this.invalid;
+                              this.set('invalid', this.invalid);
+                        } else {
+                              this.$.container.invalid = !valid;
+                        }
+                        return valid;
+                  },
+                  _checkIfValid: function() {
+                        if (!this.$.input.validate()) {
+                              return false;
+                        }
                         if (this.value && this.value.length === 9) {
                               let validSoFar = true;
                               let strDigits = new String(this.value.substr(2, 7));
@@ -69,21 +133,16 @@ project
                               let strSumBoth = new String(nSumBoth);
                               let strSumBothLastDigit = parseInt(strSumBoth.charAt(strSumBoth.length - 1));
                               if (nCheckDigit === strSumBothLastDigit) {
-                                    this.set('invalid', false);
-                                    return this.invalid;
+                                    return true;
                               } else {
-                                    this.set('invalid', true);
-                                    return this.invalid;
+                                    return false;
                               }
                         } else {
-                              this.set('invalid', true);
-                              return this.invalid;
+                              return false;
                         }
                   },
-                  _valueChanged: function() {
-                        if (this.autoValidate) {
-                              this.validate();
-                        }
+                  _validPatternChanged: function() {
+                        this.$.input.pattern = this.validPattern;
                   },
             });
       </script>
