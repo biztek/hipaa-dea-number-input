@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/biztek/hipaa-dea-number-input.svg?branch=master)](https://travis-ci.org/biztek/hipaa-dea-number-input)
 
-_[Demo and API docs](https://rajkumarajce.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input)_
+_[Demo and API docs](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input)_
 
 # \<hipaa-dea-number-input\>
 
@@ -20,13 +20,13 @@ It includes an optional label,error message,invalid,autovalidate and required at
 <hipaa-dea-number-input required="boolean value"></hipaa-dea-number-input>
 ```
 ### DEA Numbers Validation.
-A DEA number (DEA Registration Number) is a number assigned to a health care provider.
+#### A DEA number (DEA Registration Number) is a number assigned to a health care provider.
 
-A valid DEA number consists of: 2 letters, 6 numbers, & 1 check digit.
-The first letter is a code identifying the type of registrant.
-The second letter is the first letter of the registrant's last name.
-
-The last Number : DEA numbers can be verified by using the last number, which is known as the Check Digit.
+A valid DEA number consists of total 9 characters.
+- The first character is a letter, a code identifying the type of registrant. 
+- The second character is a letter or a digit 9.
+- The next six characters are digits from [0-9].
+- The last character is a check digit, `DEA numbers` can be verified by using the last charcter, which is known as the `Check Digit`.
 
 Right Format DEA Numbers example: BJ6125341 , FN5623740, AS5623740.
 
