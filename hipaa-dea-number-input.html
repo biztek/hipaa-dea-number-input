@@ -6,8 +6,18 @@
 <link rel="import" href="../paper-input/paper-input-error.html">
 <link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <!--
-`hipaa-dea-number-input`
-@demo demo/index.html
+`hipaa-dea-number-input` is a single-line text field hold valid Hipaa compliant DEA number. 
+
+`<hipaa-dea-number-input label="Input label"></hipaa-dea-number-input>`
+
+It may includes an optional label,error message,invalid,autovalidate and required attributes.
+```
+<hipaa-dea-number-input label="Input label"></hipaa-dea-number-input>
+<hipaa-dea-number-input error-message="Invalid input!"></hipaa-dea-number-input>
+<hipaa-dea-number-input invalid="boolean value"></hipaa-dea-number-input>
+<hipaa-dea-number-input autoValidate="boolean value"></hipaa-dea-number-input>
+<hipaa-dea-number-input required="boolean value"></hipaa-dea-number-input>
+```
 -->
 <dom-module id="hipaa-dea-number-input">
   <template>
@@ -51,6 +61,8 @@
           value: false,
           notify: true
         },
+        
+        // If the `autoValidate` attribute is set, element validates the input whether it is Hipaa compliant DEA number and update the label styling when the input value changes.
         autoValidate: {
           type: Boolean,
           value: false,
@@ -61,6 +73,8 @@
           value: false,
           notify: true
         },
+
+        // validPattern property defines the pattern of the DEA number that is accepted.
         validPattern: {
           type: String,
           value: '^[a-zA-z]{1}[a-zA-Z9]{1}[0-9]{7}$',
@@ -102,6 +116,8 @@
         }
         return valid;
       },
+
+      // Checks if all the characters in the allowed pattern are valid
       _checkIfValid: function() {
         if (!this.$.input.validate()) {
           return false;
