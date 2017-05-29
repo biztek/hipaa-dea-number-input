@@ -46,6 +46,18 @@
         deainput.validate();
         assert.isTrue(deainput.invalid, 'DEA Number is invalid'); // jshint ignore:line
       });
+      test('setting first character with I and rest of the characters to valid values should throw an error', function() { // jshint ignore:line
+        deainput = Polymer.dom(element.root).querySelector('#input'); // jshint ignore:line
+        deainput.value = 'IJ6125341';
+        deainput.validate();
+        assert.isTrue(deainput.invalid, 'DEA Number is invalid'); // jshint ignore:line
+      });
+      test('setting first character to Q and rest of the characters to valid values should throw an error', function() { // jshint ignore:line
+        deainput = Polymer.dom(element.root).querySelector('#input'); // jshint ignore:line
+        deainput.value = 'QJ6125341';
+        deainput.validate();
+        assert.isTrue(deainput.invalid, 'DEA Number is invalid'); // jshint ignore:line
+      });
       test('setting value for deanumber and validating the deanumber', function() { // jshint ignore:line
         deainput = Polymer.dom(element.root).querySelector('#input'); // jshint ignore:line
         deainput.value = 'AS5623740';
