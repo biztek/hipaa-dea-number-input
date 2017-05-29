@@ -2,7 +2,7 @@
   "name": "hipaa-dea-number-input",
   "description": "project",
   "main": "hipaa-dea-number-input.html",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "https://github.com/biztek/hipaa-dea-number-input/LICENSE.txt",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.7.0",
