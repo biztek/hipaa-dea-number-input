@@ -77,7 +77,7 @@ It may includes an optional label,error message,invalid,autovalidate and require
         // validPattern property defines the pattern of the DEA number that is accepted.
         validPattern: {
           type: String,
-          value: '^[a-zA-z]{1}[a-zA-Z9]{1}[0-9]{7}$',
+          value: '^[A-HJ-MPR-UXa-hj-mpr-ux]{1}[a-zA-Z9]{1}[0-9]{7}$',
           observer: '_validPatternChanged'
         },
         errorMessage: {
