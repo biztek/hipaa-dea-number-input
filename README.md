@@ -71,4 +71,4 @@ the label styling when the input value changes.
 
 ### License
 
-Licensed under [Apache License 2.0] (LICENSE).
+Licensed under [Apache License 2.0](LICENSE).
