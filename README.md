@@ -69,3 +69,6 @@ tasks such as auto-validating and label styling when the `bind-value` changes.
 If the `auto-validate` attribute is set, element validates the input whether it is Hipaa compliant DEA number and update
 the label styling when the input value changes.
 
+### License
+
+Licensed under [Apache License 2.0] (LICENSE).
