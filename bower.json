@@ -2,7 +2,7 @@
   "name": "hipaa-dea-number-input",
   "description": "project",
   "main": "hipaa-dea-number-input.html",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "Apache-2.0",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.7.0",
