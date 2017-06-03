@@ -2,6 +2,8 @@
 
 _[Demo and API docs](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input)_
 
+[Demo ↗](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input/demo/)
+
 # \<hipaa-dea-number-input\>
 
 `<hipaa-dea-number-input>` is a single-line text field to hold valid Hipaa compliant DEA number.
@@ -36,24 +38,25 @@ Of the seven digits that follow, the seventh digit is a "checksum" that is calcu
 The rightmost digit of CHECK (the digit in the ones place) is used as the check digit in the DEA number
 
 Registrant type (first letter of DEA Number):[dubious – discuss]
-A – Deprecated (used by some older entities)
-B – Hospital/Clinic
-C – Practitioner
-D – Teaching Institution
-E – Manufacturer
-F – Distributor
-G – Researcher
-H – Analytical Lab
-J – Importer
-K – Exporter
-L – Reverse Distributor
-M – Mid Level Practitioner
-P – Narcotic Treatment Program
-R – Narcotic Treatment Program
-S – Narcotic Treatment Program
-T – Narcotic Treatment Program
-U – Narcotic Treatment Program
-X – Suboxone/Subutex Prescribing Program
+
+- A – Deprecated (used by some older entities)
+- B – Hospital/Clinic
+- C – Practitioner
+- D – Teaching Institution
+- E – Manufacturer
+- F – Distributor
+- G – Researcher
+- H – Analytical Lab
+- J – Importer
+- K – Exporter
+- L – Reverse Distributor
+- M – Mid Level Practitioner
+- P – Narcotic Treatment Program
+- R – Narcotic Treatment Program
+- S – Narcotic Treatment Program
+- T – Narcotic Treatment Program
+- U – Narcotic Treatment Program
+- X – Suboxone/Subutex Prescribing Program
 
 Right Format DEA Numbers example: BJ6125341 , FN5623740, AS5623740.
 
