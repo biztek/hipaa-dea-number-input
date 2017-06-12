@@ -4,6 +4,8 @@ _[API docs ↗](https://biztek.github.io/hipaa-dea-number-input/components/hipaa
 
 _[Demo ↗](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input/demo/)_
 
+[Demo ↗](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input/demo/)
+
 # \<hipaa-dea-number-input\>
 
 `<hipaa-dea-number-input>` is a single-line text field to hold valid Hipaa compliant DEA number.
