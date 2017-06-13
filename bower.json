@@ -1,6 +1,6 @@
 {
   "name": "hipaa-dea-number-input",
-  "description": "project",
+  "description": "Input field for HIPAA compliant DEA number",
   "main": "hipaa-dea-number-input.html",
   "version": "1.0.6",
   "license": "Apache-2.0",
