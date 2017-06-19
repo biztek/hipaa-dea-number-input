@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/biztek/hipaa-dea-number-input.svg?branch=master)](https://travis-ci.org/biztek/hipaa-dea-number-input)
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/biztek/hipaa-dea-number-input)
+
 _[Demo ↗](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input/demo/)_
 
 _[API docs ↗](https://biztek.github.io/hipaa-dea-number-input/components/hipaa-dea-number-input)_
